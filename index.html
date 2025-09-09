@@ -13,6 +13,60 @@
 
   <!-- Libraries -->
   <script src="https://unpkg.com/scrollreveal"></script>
+
+  <style>
+    /* Responsive Navbar Fix */
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-menu li a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 500;
+    }
+
+    /* Mobile menu toggle */
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        background-color: #222;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        padding: 10px;
+        border-radius: 8px;
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -20,6 +74,7 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="#home" class="nav-logo">Sanu Sharma</a>
+      <span class="menu-toggle">☰</span>
       <ul class="nav-menu">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -145,6 +200,13 @@ If you’re interested, you can absolutely contact me.
       });
     });
 
+    // Mobile menu toggle
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector(".nav-menu");
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+
     // Theme Toggle
     const toggle = document.querySelector(".theme-toggle");
     toggle.addEventListener("click", () => {
@@ -174,18 +236,16 @@ If you’re interested, you can absolutely contact me.
       }
     });
 
-    // Blog View Counter (per post & total)
+    // Blog View Counter
     function updateBlogViews() {
-      const postIds = [1, 2]; // Add more IDs if you add new posts
+      const postIds = [1, 2]; // Add more IDs for new posts
       let total = 0;
-
       postIds.forEach(id => {
         let views = parseInt(localStorage.getItem(`blogPostViews-${id}`) || '0') + 1;
         localStorage.setItem(`blogPostViews-${id}`, views);
         document.getElementById(`views-${id}`).textContent = views;
         total += views;
       });
-
       document.getElementById('total-views').textContent = total;
     }
 
