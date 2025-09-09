@@ -15,18 +15,37 @@
   <script src="https://unpkg.com/scrollreveal"></script>
 
   <style>
-    /* Responsive Navbar Fix */
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #111;
+      z-index: 1001;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
     .nav-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 20px;
+      padding: 12px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      color: #00ffe0;
+      font-weight: 600;
+      font-size: 1.3rem;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
     }
 
     .nav-menu {
       display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
+      gap: 24px;
       list-style: none;
       margin: 0;
       padding: 0;
@@ -34,32 +53,74 @@
 
     .nav-menu li a {
       text-decoration: none;
-      color: inherit;
+      color: #fff;
       font-weight: 500;
+      font-family: 'Roboto Mono', monospace;
+      transition: color 0.3s ease;
+    }
+
+    .nav-menu li a:hover {
+      color: #00ffe0;
     }
 
     /* Mobile menu toggle */
     .menu-toggle {
       display: none;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       cursor: pointer;
+      color: #00ffe0;
+      user-select: none;
+      transition: transform 0.3s ease;
+      z-index: 1002;
+    }
+
+    .menu-toggle.active {
+      transform: rotate(90deg);
+    }
+
+    /* Overlay */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .overlay.active {
+      display: block;
+      opacity: 1;
     }
 
     @media (max-width: 768px) {
       .nav-menu {
-        display: none;
         flex-direction: column;
         background-color: #222;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        width: 200px;
-        padding: 10px;
-        border-radius: 8px;
+        position: fixed;
+        top: 0;
+        right: -260px;
+        width: 240px;
+        height: 100%;
+        padding: 60px 20px;
+        border-radius: 0;
+        opacity: 1;
+        transform: translateX(0);
+        transition: right 0.3s ease-in-out;
+        z-index: 1001;
       }
 
       .nav-menu.active {
-        display: flex;
+        right: 0;
+      }
+
+      .nav-menu li {
+        margin: 20px 0;
+        text-align: left;
       }
 
       .menu-toggle {
@@ -86,8 +147,11 @@
     </div>
   </nav>
 
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
   <!-- Header -->
-  <header id="home">
+  <header id="home" style="padding-top:80px;text-align:center;">
     <h1 class="glow">Sanu Sharma</h1>
     <p>AI + IT | Tech | Dreamer with a Plan</p>
   </header>
@@ -96,14 +160,7 @@
   <section id="about" class="section about">
     <h2>About Me</h2>
     <p>
-      Namaste 🙏 I'm <b>Sanu Sharma</b> — a passionate AI enthusiast and robotics geek who also finds deep purpose in spirituality.
-     My mission is to advance science further… to use science for the welfare of humanity. I did my schooling in Nagpur and now I am studying at GH Raisoni College. Since childhood, I have been deeply interested in science and mathematics—that’s why I can build anything, whether it’s a website, robots, or even an AI chatbot like ChatGPT-5 or Grok-4.
-
-I have also developed chat-based applications, and my most advanced project is my own version of Alexa, which not only responds smartly to static commands like ChatGPT but can also control all the electrical components of my home.
-
-I can also teach Physics, Chemistry, and Mathematics (PCM), so if you need a teacher, you can definitely consider me. One more thing—I really dislike rote memorization and cramming for exams.
-
-If you’re interested, you can absolutely contact me.
+      Namaste 🙏 I'm <b>Sanu Sharma</b> — a passionate AI enthusiast and robotics geek who also finds deep purpose in spirituality. My mission is to advance science further… to use science for the welfare of humanity. I did my schooling in Nagpur and now I am studying at GH Raisoni College. Since childhood, I have been deeply interested in science and mathematics—that’s why I can build anything, whether it’s a website, robots, or even an AI chatbot like ChatGPT-5 or Grok-4. I have also developed chat-based applications, and my most advanced project is my own version of Alexa, which not only responds smartly to static commands like ChatGPT but can also control all the electrical components of my home. I can also teach Physics, Chemistry, and Mathematics (PCM), so if you need a teacher, you can definitely consider me. One more thing—I really dislike rote memorization and cramming for exams. If you’re interested, you can absolutely contact me.
     </p>
   </section>
 
@@ -153,18 +210,13 @@ If you’re interested, you can absolutely contact me.
   <!-- Contact -->
   <section id="contact" class="section contact-panel">
     <h2>Work With Me</h2>
-    <p>Have a project or an idea? Let's talk! Fill the form below:</p>
-
     <form action="https://formspree.io/f/xanbjzlq" method="POST" id="contact-form">
       <label for="name">Your Name</label>
       <input type="text" id="name" name="name" required />
-
       <label for="email">Your Email</label>
       <input type="email" id="email" name="email" required />
-
       <label for="message">Message</label>
       <textarea id="message" name="message" rows="5" required></textarea>
-
       <input type="hidden" name="_subject" value="💼 New Work Request from Portfolio!" />
       <button type="submit">Send Request</button>
       <p id="form-msg"></p>
@@ -175,9 +227,6 @@ If you’re interested, you can absolutely contact me.
   <footer>
     <p>&copy; 2025 Sanu Sharma. All rights reserved.</p>
   </footer>
-
-  <!-- Theme Toggle Button -->
-  <button class="theme-toggle">🌓</button>
 
   <!-- Scripts -->
   <script>
@@ -190,34 +239,41 @@ If you’re interested, you can absolutely contact me.
       reset: false
     });
 
-    // Navbar smooth scrolling
+    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({
           behavior: 'smooth'
         });
+        // Close menu on mobile after click
+        navMenu.classList.remove("active");
+        menuToggle.classList.remove("active");
+        overlay.classList.remove("active");
       });
     });
 
     // Mobile menu toggle
     const menuToggle = document.querySelector(".menu-toggle");
     const navMenu = document.querySelector(".nav-menu");
+    const overlay = document.querySelector(".overlay");
+
     menuToggle.addEventListener("click", () => {
       navMenu.classList.toggle("active");
+      menuToggle.classList.toggle("active");
+      overlay.classList.toggle("active");
     });
 
-    // Theme Toggle
-    const toggle = document.querySelector(".theme-toggle");
-    toggle.addEventListener("click", () => {
-      document.body.classList.toggle("light-mode");
-      toggle.innerText = document.body.classList.contains("light-mode") ? "🌞" : "🌓";
+    // Close menu when overlay clicked
+    overlay.addEventListener("click", () => {
+      navMenu.classList.remove("active");
+      menuToggle.classList.remove("active");
+      overlay.classList.remove("active");
     });
 
-    // Contact Form Handling
+    // Contact Form
     const form = document.getElementById("contact-form");
     const msg = document.getElementById("form-msg");
-
     form.addEventListener("submit", async function (e) {
       e.preventDefault();
       const data = new FormData(form);
@@ -238,7 +294,7 @@ If you’re interested, you can absolutely contact me.
 
     // Blog View Counter
     function updateBlogViews() {
-      const postIds = [1, 2]; // Add more IDs for new posts
+      const postIds = [1, 2];
       let total = 0;
       postIds.forEach(id => {
         let views = parseInt(localStorage.getItem(`blogPostViews-${id}`) || '0') + 1;
@@ -248,8 +304,8 @@ If you’re interested, you can absolutely contact me.
       });
       document.getElementById('total-views').textContent = total;
     }
-
     updateBlogViews();
   </script>
 </body>
 </html>
+
