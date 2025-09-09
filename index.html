@@ -91,7 +91,6 @@ If you’re interested, you can absolutely contact me.
         <span class="post-date">September 09, 2025</span>
         <span class="post-views">Views: <span id="views-2">0</span></span>
       </article>
-      <!-- Add more articles here for daily updates by editing this HTML -->
     </div>
     <p class="total-views">Total Blog Views: <span id="total-views">0</span> </p>
   </section>
@@ -175,21 +174,22 @@ If you’re interested, you can absolutely contact me.
       }
     });
 
-    // Simple local view counter (per user, for demo; for real tracking, use Google Analytics or a backend service)
-    // This increments on page load but resets per browser. For global count only you can see, manually update the spans or integrate a service.
-    function incrementViews() {
-      const totalViews = parseInt(localStorage.getItem('totalViews') || '0') + 1;
-      localStorage.setItem('totalViews', totalViews);
-      document.getElementById('total-views').textContent = totalViews;
+    // Blog View Counter (per post & total)
+    function updateBlogViews() {
+      const postIds = [1, 2]; // Add more IDs if you add new posts
+      let total = 0;
 
-      // For individual posts (demo)
-      [1, 2].forEach(id => {
-        const postViews = parseInt(localStorage.getItem(`postViews-${id}`) || '0') + 1;
-        localStorage.setItem(`postViews-${id}`, postViews);
-        document.getElementById(`views-${id}`).textContent = postViews;
+      postIds.forEach(id => {
+        let views = parseInt(localStorage.getItem(`blogPostViews-${id}`) || '0') + 1;
+        localStorage.setItem(`blogPostViews-${id}`, views);
+        document.getElementById(`views-${id}`).textContent = views;
+        total += views;
       });
+
+      document.getElementById('total-views').textContent = total;
     }
-    incrementViews();
+
+    updateBlogViews();
   </script>
 </body>
 </html>
