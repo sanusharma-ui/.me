@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanu Sharma</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css"> 
+
+  <!-- Libraries -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">Sanu Sharma</a>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#interests">Interests</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header id="home">
+    <h1 class="glow">Sanu Sharma</h1>
+    <p>AI + IT | Tech | Dreamer with a Plan</p>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="section about">
+    <h2>About Me</h2>
+    <p>
+      Namaste 🙏 I'm <b>Sanu Sharma</b> — a passionate AI enthusiast and robotics geek who also finds deep purpose in spirituality.
+     My mission is to advance science further… to use science for the welfare of humanity. I did my schooling in Nagpur and now I am studying at GH Raisoni College. Since childhood, I have been deeply interested in science and mathematics—that’s why I can build anything, whether it’s a website, robots, or even an AI chatbot like ChatGPT-5 or Grok-4.
+
+I have also developed chat-based applications, and my most advanced project is my own version of Alexa, which not only responds smartly to static commands like ChatGPT but can also control all the electrical components of my home.
+
+I can also teach Physics, Chemistry, and Mathematics (PCM), so if you need a teacher, you can definitely consider me. One more thing—I really dislike rote memorization and cramming for exams.
+
+If you’re interested, you can absolutely contact me.
+    </p>
+  </section>
+
+  <!-- Interests -->
+  <section id="interests" class="section interests">
+    <h2>My Interests</h2>
+    <ul>
+      <li>Artificial Intelligence & Machine Learning</li>
+      <li>Robotics and Automation</li>
+      <li>Geopolitics and Space Science</li>
+      <li>Building tech with purpose</li>
+    </ul>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section projects">
+    <h2>Some Projects</h2>
+    <div class="projects-grid">
+      <a href="https://universal-encoder-sanusharma.netlify.app/" target="_blank">Universal Encoder</a>
+      <a href="https://sanusharma-ui.github.io/SharmaGalactix/index.html" target="_blank">Space Website</a>
+      <a href="https://huggingface.co/spaces/Sanu00/mychatbot" target="_blank">AI Chatbot</a>
+      <a href="https://shadowchat-4.onrender.com/" target="_blank">ShadowChat</a>
+      <a href="#" target="_blank">GitHub</a>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="section blog">
+    <h2>Blog</h2>
+    <div class="blog-posts">
+      <article class="blog-post">
+        <h3>Daily Update: My First AI Project</h3>
+        <p>Today, I worked on an exciting AI model for image recognition. Here's what I learned...</p>
+        <span class="post-date">September 09, 2025</span>
+        <span class="post-views">Views: <span id="views-1">0</span></span>
+      </article>
+      <article class="blog-post">
+        <h3>Hey guys AI se nahi banaya maine</h3>
+        <p>If you think AI can do anything then you're not totally wrong but you're definitely partially incorrect. Using AI is also a skill, and without skills and proper prompts, the answers will be wrong. I'll explain—if you want to create a website, you need to give a proper prompt. If you give a prompt like "ek khatarnak website bana de jo ek dum cool ho," then AI will give you a very "tuccha" code, because AI understands structured language, not emotional language. So you have to give a prompt like "make a website with a button here, this color, and the button should perform this function, etc."—then AI will give you the right code. One more thing: errors and problems have to be fixed by us, no AI will come to do that for you. That’s why the biggest power is your brain—if you use it, you'll always stay ahead.</p>
+        <span class="post-date">September 09, 2025</span>
+        <span class="post-views">Views: <span id="views-2">0</span></span>
+      </article>
+      <!-- Add more articles here for daily updates by editing this HTML -->
+    </div>
+    <p class="total-views">Total Blog Views: <span id="total-views">0</span> (Only visible to you - update manually or integrate analytics)</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section contact-panel">
+    <h2>Work With Me</h2>
+    <p>Have a project or an idea? Let's talk! Fill the form below:</p>
+
+    <form action="https://formspree.io/f/xanbjzlq" method="POST" id="contact-form">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <input type="hidden" name="_subject" value="💼 New Work Request from Portfolio!" />
+      <button type="submit">Send Request</button>
+      <p id="form-msg"></p>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Sanu Sharma. All rights reserved.</p>
+  </footer>
+
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle">🌓</button>
+
+  <!-- Scripts -->
+  <script>
+    // ScrollReveal animations
+    ScrollReveal().reveal('.section', {
+      duration: 1200,
+      origin: 'bottom',
+      distance: '50px',
+      easing: 'ease-in-out',
+      reset: false
+    });
+
+    // Navbar smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Theme Toggle
+    const toggle = document.querySelector(".theme-toggle");
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+      toggle.innerText = document.body.classList.contains("light-mode") ? "🌞" : "🌓";
+    });
+
+    // Contact Form Handling
+    const form = document.getElementById("contact-form");
+    const msg = document.getElementById("form-msg");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        msg.innerText = "🎉 Thank you! Your request has been sent successfully.";
+        msg.style.color = "#00ffe0";
+        form.reset();
+      } else {
+        msg.innerText = "❌ Oops! Something went wrong. Try again later.";
+        msg.style.color = "salmon";
+      }
+    });
+
+    // Simple local view counter (per user, for demo; for real tracking, use Google Analytics or a backend service)
+    // This increments on page load but resets per browser. For global count only you can see, manually update the spans or integrate a service.
+    function incrementViews() {
+      const totalViews = parseInt(localStorage.getItem('totalViews') || '0') + 1;
+      localStorage.setItem('totalViews', totalViews);
+      document.getElementById('total-views').textContent = totalViews;
+
+      // For individual posts (demo)
+      [1, 2].forEach(id => {
+        const postViews = parseInt(localStorage.getItem(`postViews-${id}`) || '0') + 1;
+        localStorage.setItem(`postViews-${id}`, postViews);
+        document.getElementById(`views-${id}`).textContent = postViews;
+      });
+    }
+    incrementViews();
+  </script>
+</body>
+</html>
