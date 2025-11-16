@@ -40,6 +40,7 @@ body.light-mode {
 
 body.light-mode .navbar {
   background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
@@ -84,6 +85,32 @@ body.light-mode .nav-menu a {
   color: #00ffe0;
 }
 
+body.light-mode .nav-menu a:hover {
+  color: #ff7e5f;
+}
+
+/* ===== Theme Toggle Button ===== */
+.theme-toggle {
+  padding: 8px 12px;
+  border-radius: 50%;
+  border: none;
+  background: #222;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease, background 0.3s ease;
+  z-index: 9999;
+}
+
+body.light-mode .theme-toggle {
+  background: #ddd;
+  color: #222;
+}
+
+.theme-toggle:hover {
+  transform: rotate(180deg);
+}
+
 /* ===== Header ===== */
 header {
   text-align: center;
@@ -107,9 +134,18 @@ header h1 {
   text-shadow: 0 0 5px #00ffe0, 0 0 10px #00ffe0, 0 0 20px #00ffe0;
 }
 
+body.light-mode .glow {
+  color: #222;
+  text-shadow: 0 0 5px #ff7e5f, 0 0 10px #ff7e5f, 0 0 20px #ff7e5f;
+}
+
 header p {
   font-size: 1.2rem;
   opacity: 0.8;
+}
+
+body.light-mode header p {
+  opacity: 0.7;
 }
 
 @keyframes fadeScale {
@@ -125,11 +161,20 @@ header p {
   background: rgba(20, 20, 20, 0.5);
   border-radius: 10px;
   backdrop-filter: blur(8px);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+body.light-mode .section {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .section:hover {
   box-shadow: 0 4px 20px rgba(0, 255, 224, 0.2);
+}
+
+body.light-mode .section:hover {
+  box-shadow: 0 4px 20px rgba(255, 126, 95, 0.2);
 }
 
 .section h2 {
@@ -140,6 +185,10 @@ header p {
   border-bottom: 2px solid #444;
   padding-bottom: 10px;
   position: relative;
+}
+
+body.light-mode .section h2 {
+  border-bottom: 2px solid #ccc;
 }
 
 .section h2::after {
@@ -165,6 +214,10 @@ header p {
   opacity: 0.9;
 }
 
+body.light-mode .about p {
+  opacity: 0.8;
+}
+
 /* Interests */
 .interests ul {
   list-style: none;
@@ -180,9 +233,17 @@ header p {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+body.light-mode .interests li {
+  background: #f5f5f5;
+}
+
 .interests li:hover {
   transform: translateY(-5px) scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.light-mode .interests li:hover {
+  box-shadow: 0 8px 20px rgba(255, 126, 95, 0.2);
 }
 
 /* Projects */
@@ -200,11 +261,16 @@ header p {
   border-radius: 8px;
   text-align: center;
   text-decoration: none;
-  color: inherit;
+  color: #eaeaea;
   font-weight: 500;
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
+}
+
+body.light-mode .projects-grid a {
+  background: #f5f5f5;
+  color: #222;
 }
 
 .projects-grid a::before {
@@ -228,6 +294,11 @@ header p {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
+body.light-mode .projects-grid a:hover {
+  background: #e0e0e0;
+  box-shadow: 0 8px 20px rgba(255, 126, 95, 0.2);
+}
+
 /* Blog */
 .blog-posts {
   display: flex;
@@ -238,14 +309,22 @@ header p {
 
 .blog-post {
   background: #1a1a1a;
-  padding: 15px;
+  padding: 20px;
   border-radius: 8px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light-mode .blog-post {
+  background: #f5f5f5;
 }
 
 .blog-post:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 15px rgba(0, 255, 224, 0.2);
+}
+
+body.light-mode .blog-post:hover {
+  box-shadow: 0 4px 15px rgba(255, 126, 95, 0.2);
 }
 
 .blog-post h3 {
@@ -254,26 +333,60 @@ header p {
   color: #00ffe0;
 }
 
+body.light-mode .blog-post h3 {
+  color: #ff7e5f;
+}
+
 .blog-post p {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   opacity: 0.9;
 }
 
-.post-date, .post-views {
+body.light-mode .blog-post p {
+  opacity: 0.8;
+}
+
+.blog-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 0.9rem;
   opacity: 0.7;
-  display: block;
-  margin-top: 5px;
+  margin-top: 10px;
+}
+
+.post-date, .post-views {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.post-views span {
+  font-weight: 600;
+  color: #00ffe0;
+}
+
+body.light-mode .post-views span {
+  color: #ff7e5f;
 }
 
 .total-views {
   text-align: center;
   margin-top: 20px;
   font-size: 1rem;
-  opacity: 0.8;
+  font-weight: 600;
   background: rgba(0, 255, 224, 0.1);
-  padding: 10px;
+  padding: 12px;
   border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s ease;
+}
+
+body.light-mode .total-views {
+  background: rgba(255, 126, 95, 0.1);
 }
 
 /* Contact Form */
@@ -295,12 +408,23 @@ form textarea {
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
+body.light-mode form input,
+body.light-mode form textarea {
+  background: #f5f5f5;
+  color: #222;
+}
+
 form input:focus,
 form textarea:focus {
   outline: none;
   background: #292929;
   transform: scale(1.02);
   box-shadow: 0 0 10px rgba(255, 126, 95, 0.5);
+}
+
+body.light-mode form input:focus,
+body.light-mode form textarea:focus {
+  background: #e0e0e0;
 }
 
 form button {
@@ -334,29 +458,27 @@ footer {
   border-top: 1px solid #222;
 }
 
-/* Theme Toggle */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 10px 14px;
-  border-radius: 50%;
-  border: none;
-  background: #222;
-  color: #fff;
-  cursor: pointer;
-  font-size: 1.2rem;
-  transition: transform 0.3s ease;
-  z-index: 9999;
+body.light-mode footer {
+  border-top: 1px solid #ccc;
 }
 
-body.light-mode .theme-toggle {
-  background: #ddd;
-  color: #222;
+.footer-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.theme-toggle:hover {
-  transform: rotate(180deg);
+.footer-container p {
+  flex: 1;
+  text-align: left;
+}
+
+.footer-container .theme-toggle {
+  flex-shrink: 0;
 }
 
 /* Animations */
@@ -364,7 +486,7 @@ body.light-mode .theme-toggle {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive for Navbar */
+/* Responsive for Navbar and Footer */
 @media (max-width: 768px) {
   .nav-menu {
     gap: 15px;
@@ -372,5 +494,14 @@ body.light-mode .theme-toggle {
   
   .nav-logo {
     font-size: 1.2rem;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-container p {
+    text-align: center;
   }
 }

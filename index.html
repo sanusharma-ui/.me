@@ -160,7 +160,7 @@
   <section id="about" class="section about">
     <h2>About Me</h2>
     <p>
-      Namaste 🙏 I'm <b>Sanu Sharma</b> — a passionate AI enthusiast and robotics geek who also finds deep purpose in spirituality. My mission is to advance science further… to use science for the welfare of humanity. I did my schooling in Nagpur and now I am studying at GH Raisoni College. Since childhood, I have been deeply interested in science and mathematics—that’s why I can build anything, whether it’s a website, robots, or even an AI chatbot like ChatGPT-5 or Grok-4. I have also developed chat-based applications, and my most advanced project is my own version of Alexa, which not only responds smartly to static commands like ChatGPT but can also control all the electrical components of my home. I can also teach Physics, Chemistry, and Mathematics (PCM), so if you need a teacher, you can definitely consider me. One more thing—I really dislike rote memorization and cramming for exams. If you’re interested, you can absolutely contact me.
+      Namaste 🙏 I'm <b>Sanu Sharma</b> — a passionate AI enthusiast and robotics geek who also finds deep purpose in spirituality. My mission is to advance science further… to use science for the welfare of humanity. I did my schooling in Nagpur and now I am studying at GH Raisoni College. Since childhood, I have been deeply curious about technology and its potential to transform lives.
     </p>
   </section>
 
@@ -183,12 +183,12 @@
       <a href="https://sanusharma-ui.github.io/SharmaGalactix/index.html" target="_blank">Space Website</a>
       <a href="https://github.com/sanusharma-ui/chatbot-app" target="_blank">AI Chatbot</a>
       <a href="https://shadowchat-3.onrender.com" target="_blank">ShadowChat</a>
-      <a href="https://github.com/sanusharma-ui/AI-Debate-Arena" target="_blank">AI debate Battleground</a>
-      <a href="https://online-compiler-rhe3.onrender.com" target="_blank">Online-compiler</a>
+      <a href="https://github.com/sanusharma-ui/AI-Debate-Arena" target="_blank">AI Debate Battleground</a>
+      <a href="https://online-compiler-rhe3.onrender.com" target="_blank">Online Compiler</a>
       <a href="https://collegebot-b60v.onrender.com" target="_blank">CollegeBot</a>
       <a href="https://github.com/sanusharma-ui/DoctorAI" target="_blank">AI Cardiologist</a>
       <a href="https://sonu-frontend.onrender.com/" target="_blank">AI Anime Clones</a>
-      <a href="https://github.com/sanusharma-ui/" target="_blank">View All my repo / projects</a>
+      <a href="https://github.com/sanusharma-ui/" target="_blank">View All My Repos / Projects</a>
     </div>
   </section>
 
@@ -199,17 +199,21 @@
       <article class="blog-post">
         <h3>Daily Update: My First AI Project</h3>
         <p>Today, I worked on an exciting AI model for image recognition. Here's what I learned...</p>
-        <span class="post-date">September 09, 2025</span>
-        <span class="post-views">Views: <span id="views-1">0</span></span>
+        <div class="blog-meta">
+          <span class="post-date">September 09, 2025</span>
+          <span class="post-views">👀 Views: <span id="views-1">0</span></span>
+        </div>
       </article>
       <article class="blog-post">
-        <h3>Why AI</h3>
-        <p>If you think AI can do anything then you're not totally wrong but you're definitely partially incorrect. Using AI is also a skill, and without skills and proper prompts, the answers will be wrong. I'll explain—if you want to create a website, you need to give a proper prompt. If you give a prompt like "ek khatarnak website bana de jo ek dum cool ho," then AI will give you a very "tuccha" code, because AI understands structured language, not emotional language. So you have to give a prompt like "make a website with a button here, this color, and the button should perform this function, etc."—then AI will give you the right code. One more thing: errors and problems have to be fixed by us, no AI will come to do that for you. That’s why the biggest power is your brain—if you use it, you'll always stay ahead.</p>
-        <span class="post-date">September 12, 2025</span>
-        <span class="post-views">Views: <span id="views-2">0</span></span>
+        <h3>Why AI?</h3>
+        <p>If you think AI can do anything, you're not totally wrong but you're partially incorrect. Using AI is a skill, and mastering it requires understanding its limits and possibilities...</p>
+        <div class="blog-meta">
+          <span class="post-date">September 12, 2025</span>
+          <span class="post-views">👀 Views: <span id="views-2">0</span></span>
+        </div>
       </article>
     </div>
-    <p class="total-views">Total Blog Views: <span id="total-views">0</span> </p>
+    <p class="total-views">📊 Total Blog Views: <span id="total-views">0</span></p>
   </section>
 
   <!-- Contact -->
@@ -230,11 +234,31 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Sanu Sharma. All rights reserved.</p>
+    <div class="footer-container">
+      <p>&copy; 2025 Sanu Sharma. All rights reserved.</p>
+      <button class="theme-toggle" title="Toggle Theme">🌙</button>
+    </div>
   </footer>
 
   <!-- Scripts -->
   <script>
+    // Theme Toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
+
+    // Load saved theme from localStorage
+    if (localStorage.getItem('theme') === 'light') {
+      body.classList.add('light-mode');
+      themeToggle.textContent = '☀️';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      const isLightMode = body.classList.contains('light-mode');
+      themeToggle.textContent = isLightMode ? '☀️' : '🌙';
+      localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+    });
+
     // ScrollReveal animations
     ScrollReveal().reveal('.section', {
       duration: 1200,
@@ -298,19 +322,35 @@
     });
 
     // Blog View Counter
-    function updateBlogViews() {
+    async function updateBlogViews() {
       const postIds = [1, 2];
       let total = 0;
-      postIds.forEach(id => {
-        let views = parseInt(localStorage.getItem(`blogPostViews-${id}`) || '0') + 1;
+
+      // Simulate fetching view counts from a server
+      const simulateServerFetch = (id) => {
+        // For demo purposes, use localStorage with a base value
+        let views = parseInt(localStorage.getItem(`blogPostViews-${id}`) || '0');
+        views += 1; // Increment view count
         localStorage.setItem(`blogPostViews-${id}`, views);
-        document.getElementById(`views-${id}`).textContent = views;
+        return views;
+      };
+
+      for (const id of postIds) {
+        const views = await simulateServerFetch(id);
+        const viewElement = document.getElementById(`views-${id}`);
+        viewElement.textContent = views;
+        viewElement.style.opacity = 0;
+        viewElement.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500 });
         total += views;
-      });
-      document.getElementById('total-views').textContent = total;
+      }
+
+      const totalViewsElement = document.getElementById('total-views');
+      totalViewsElement.textContent = total;
+      totalViewsElement.style.opacity = 0;
+      totalViewsElement.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500 });
     }
+
     updateBlogViews();
   </script>
 </body>
 </html>
-
